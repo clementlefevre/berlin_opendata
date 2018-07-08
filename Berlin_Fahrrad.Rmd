@@ -1,0 +1,84 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(tabulizer)
+library(tidyverse)
+library(ggmap)
+```
+```{r}
+out <- extract_tables('radfahrer2017.pdf',pages=c(35:111),method='stream')
+```
+
+```{r}
+
+arrange.cols <- function(df){
+  
+  return (as.data.frame(df))
+}
+
+
+final <- do.call(bind_rows,lapply(out, arrange.cols))
+
+
+```
+
+```{r}
+colnames(final)<- c(paste0('street',c(1:3)),paste0('accidents',c(1:3)))
+final <- final %>% mutate(street1=ifelse(street1=='',street2,street1))
+final <- final %>% mutate(street1=ifelse(street1=='',street3,street1))
+final <- final %>% mutate(accidents1=ifelse(accidents1=="",accidents2,accidents1))
+final <- final %>% mutate(accidents1=ifelse(accidents1=='',accidents3,accidents1))
+final <- final %>% select(street1,accidents1)
+final <- final %>% mutate(accidents1=as.numeric(accidents1))
+final <- final %>% group_by(street1)%>% summarise(accidents=sum(accidents1))
+final <- final %>% filter(accidents<100)
+final <- final %>% filter(grepl("\\D", final$street1))
+final$street1 <- as.character(final$street1)
+write.csv(final,'final.csv')
+```
+
+
+```{r}
+final <- read.csv('final.csv')
+final$street1 <- as.character(final$street1)
+register_google(key = '')
+
+
+
+
+final$lon <- 0
+final$lat <- 0
+# Loop through the addresses to get the latitude and longitude of each address and add it to the
+# origAddress data frame in new columns lat and lon
+for(i in 1:nrow(final))
+{
+ 
+  result <- geocode(paste0(final$street1[i],' Berlin, Berlin, Germany'), output = "latlona", source = "google")
+  final$lon[i] <- as.numeric(result[1])
+  final$lat[i] <- as.numeric(result[2])
+ 
+  print(final$street1[i])
+  
+}
+
+write.csv(final,'final_with_geocoding.csv')
+```
+
+```{r}
+
+final <- read.csv('final_with_geocoding.csv')
+mymap <- get_map(location = c(13.15,52.2,13.6,52.6),source ='stamen' )
+
+
+ggmap(mymap)+ geom_point(data=final,aes(x=lon,y=lat,color='red'))
+
+ggplot(data=final,aes(x=lon,y=lat,color='red')) + geom_point()
+```
+
