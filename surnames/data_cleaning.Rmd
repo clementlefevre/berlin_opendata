@@ -1,0 +1,33 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+
+all_files <- list.files('data/names/')
+
+read_names_files <- function(file.name){
+  print(file.name)
+  df <- read.csv(paste('data/names/',file.name,sep=''),sep=';')
+  df$position <- NULL
+  df$viertel <- str_match(file.name, "_(.*?)\\.")[2]
+  df$year <- word(file.name,1,sep = "\\_")
+  return (df %>% select(year,everything()))
+}
+
+df <- read_names_files(all_files[1])
+
+df <- do.call(`rbind`,lapply(all_files, read_names_files))
+write.csv(df,'data/all_names_year_viertel.csv')
+
+```
+
