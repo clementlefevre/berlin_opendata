@@ -1,0 +1,42 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df.bike.stolen <- read.csv('data/fahrraddiebstaehle_berlin_2015_217 - Fahrraddiebstaehle in Berlin.csv',stringsAsFactors = F)
+df.bike.stolen$lor_plr <- as.numeric(df.bike.stolen$lor_plr)
+df.demo <- read.csv('data/berlin_population_LOR_31_12_2017.csv',stringsAsFactors = F,skip = 10)
+
+df.demo <-df.demo %>%  separate(Kontinente.Staaten, c("lor", "name"), " ")
+df.demo <-df.demo %>% select(-matches('Annotations') )
+df.demo$lor <-as.numeric(df.demo$lor)
+
+```
+## merge me up
+```{r}
+df <- merge(df.bike.stolen,df.demo,by.x='lor_plr',by.y='lor',all.x = TRUE)
+df <- df %>% filter(Deutschland>0)
+origin <- colnames(df)[7:ncol(df)]
+
+data <- df %>% select(-c(lor_plr_name,fahrraddiebstaehle_2015,fahrraddiebstaehle_2016,name))
+data$fahrraddiebstaehle_2017 <- as.numeric(data$fahrraddiebstaehle_2017)
+data <- data %>% mutate_all(funs(type.convert(as.character(replace(., .=='-', 0)))))
+
+fit <- lm(fahrraddiebstaehle_2017 ~ ., data  = subset(data, select=-c(lor_plr)))
+summary(fit)
+```
+
+## plot
+```{r}
+ggplot(data,aes(fahrraddiebstaehle_2017,Vereinigte.Staaten...USA))+ geom_point()+ geom_smooth(method = lm, se = FALSE)
+```
+
