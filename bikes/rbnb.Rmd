@@ -1,0 +1,113 @@
+---
+title: "RBnB Maps SHP"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(sp)
+library(rgdal)
+library(ggmap)
+library(ggplot2)
+library(stringr)
+library(RColorBrewer)
+library(plotrix)   
+library(classInt)   
+library(scales)
+library(dplyr)
+```
+Read Demographic Data
+
+```{r}
+df.demo.total <- read.csv('LOR_SHP_EPSG_25833/EWR201512E_Matrix.csv',stringsAsFactors = F,sep=';',encoding = "DE")
+df.demo.total$RAUMID<- str_pad(df.demo.total$RAUMID, 8, pad = "0")
+df.demo.total<- df.demo.total %>% select(c('RAUMID','E_E'))
+
+df.demo<-read.csv('LOR_SHP_EPSG_25833/EWRMIGRA201512H_Matrix.csv', stringsAsFactors = F,sep=';',encoding = "DE")
+df.demo$RAUMID<- str_pad(df.demo$RAUMID, 8, pad = "0")
+df.demo<- merge(df.demo,df.demo.total,by='RAUMID')
+df.demo<-df.demo %>% mutate(TK_AR = (HK_Turk+HK_Arab)/E_E*100.0)
+df.demo<- df.demo %>% mutate_at(c('HK_Turk',"HK_Arab",'HK_Polen'),funs(./E_E*100.0))
+
+```
+
+
+
+Plot Map
+```{r}
+
+ogrInfo(dsn = "./LOR_SHP_EPSG_25833/",layer="Planungsraum_EPSG_25833")
+
+spp    <- readOGR(dsn="./LOR_SHP_EPSG_25833/",layer="Planungsraum_EPSG_25833",p4s = "+init=epsg:25833",encoding = "DE")
+
+#spp<- spp[which(spp$SCHLUESSEL == "0104"),]
+spp<- spTransform(spp, CRS("+init=epsg:4326"))
+#map    <- get_googlemap('berlin',zoom=10)
+map    <- get_googlemap('berlin',zoom=12,maptype='terrain')
+
+
+
+spp<- merge(spp,df.demo, by.x='SCHLUESSEL',by.y='RAUMID')
+spp.df <- fortify(spp,region = 'SCHLUESSEL')
+data <- merge(spp.df,spp@data, by="id", by.y = "SCHLUESSEL")
+
+ggmap(map, extent='device', legend="bottomleft") + 
+  geom_polygon(data = data, aes(x = long, y=lat, group=id, 
+               fill=data$TK_AR              )  ,color = "grey", size = 0.1,alpha=0.8) + 
+  coord_map()+
+  scale_fill_distiller(name="Percent", palette = "BuGn",direction=1, breaks = pretty_breaks(n = 10))+
+  theme_nothing(legend = TRUE)+
+  labs(title="Prevalence of X in India")
+
+```
+
+
+```{r}
+df.demo<-read.csv('LOR_SHP_EPSG_25833/EWRMIGRA201512H_Matrix.csv', stringsAsFactors = F,sep=';',encoding = "DE")
+df.demo$RAUMID<- str_pad(df.demo$RAUMID, 8, pad = "0")
+spp@data<- merge(spp@data,df.demo, by.x='SCHLUESSEL',by.y='RAUMID')
+```
+
+Draw Map
+
+```{r}
+# Génération de l'échelle de couleurs et affectation
+col <- findColours(classIntervals(spp@data$HK_Turk, 100, style="pretty"),
+                       smoothColors("#ffffe5",98,"#00441b"))
+
+# Affectation d'un gris clair pour les données manquantes
+col[is.na(spp@data$HK_Turk)] <- "#DDDDDD"
+plot(spp,  col=col, border=col,lwd=.8)
+```
+```{r}
+# Génération de l'échelle de couleurs et affectation
+col <- findColours(classIntervals(spp@data$HK_Polen, 100, style="pretty"),
+                       smoothColors("#ffffe5",98,"#00441b"))
+
+# Affectation d'un gris clair pour les données manquantes
+col[is.na(spp@data$HK_Polen)] <- "#DDDDDD"
+plot(spp,  col=col, border=col,lwd=.8)
+```
+```{r}
+# Génération de l'échelle de couleurs et affectation
+col <- findColours(classIntervals(spp@data$HK_Arab, 100, style="pretty"),
+                       smoothColors("#ffffe5",98,"#00441b"))
+
+# Affectation d'un gris clair pour les données manquantes
+col[is.na(spp@data$HK_Arab)] <- "#DDDDDD"
+plot(spp,  col=col, border=col,lwd=.8)
+```
+
+```{r}
+# Génération de l'échelle de couleurs et affectation
+col <- findColours(classIntervals(spp@data$HK_EheSU, 100, style="pretty"),
+                       smoothColors("#ffffe5",98,"#00441b"))
+
+# Affectation d'un gris clair pour les données manquantes
+col[is.na(spp@data$HK_EheSU)] <- "#DDDDDD"
+plot(spp,  col=col, border=col,lwd=.8)
+```
+

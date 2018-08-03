@@ -25,18 +25,34 @@ df.demo$lor <-as.numeric(df.demo$lor)
 ```{r}
 df <- merge(df.bike.stolen,df.demo,by.x='lor_plr',by.y='lor',all.x = TRUE)
 df <- df %>% filter(Deutschland>0)
-origin <- colnames(df)[7:ncol(df)]
 
-data <- df %>% select(-c(lor_plr_name,fahrraddiebstaehle_2015,fahrraddiebstaehle_2016,name))
+
+
+data <- df %>% select(-c(fahrraddiebstaehle_2015,fahrraddiebstaehle_2016,name))
 data$fahrraddiebstaehle_2017 <- as.numeric(data$fahrraddiebstaehle_2017)
+
 data <- data %>% mutate_all(funs(type.convert(as.character(replace(., .=='-', 0)))))
 
-fit <- lm(fahrraddiebstaehle_2017 ~ ., data  = subset(data, select=-c(lor_plr)))
-summary(fit)
-```
+data <- data %>% select(lor_plr,lor_plr_name,fahrraddiebstaehle_2017,Europäische.Union..EU.,Europa,everything())
 
+## Compute total theft vs total population
+data <- data %>%
+    replace(is.na(.), 0) %>%
+    mutate(total.population = rowSums(.[6:ncol(data)]))
+
+data <- data %>% select(lor_plr,lor_plr_name,fahrraddiebstaehle_2017,total.population,everything())
+
+data<- data %>% mutate_at(vars(Deutschland: Ohne.Angabe.zur.Staatsangehörigkeit), funs(ratio= ./ total.population))
+data$theft.per.habitant <- data$fahrraddiebstaehle_2017 / data$total.population
+data <- data %>% select(lor_plr,lor_plr_name,fahrraddiebstaehle_2017,total.population,theft.per.habitant,everything())
+
+```
 ## plot
 ```{r}
-ggplot(data,aes(fahrraddiebstaehle_2017,Vereinigte.Staaten...USA))+ geom_point()+ geom_smooth(method = lm, se = FALSE)
+ggplot(data %>% filter(theft.per.habitant<1 & Italien>0),aes(log(theft.per.habitant),Italien_ratio))+ geom_point()+ geom_smooth(method = lm, se = FALSE)
+write.csv(data,'bike_theft_with_demography.csv')
 ```
+
+
+
 

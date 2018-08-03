@@ -1,0 +1,75 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(raster)
+library(leaflet)
+library(tidyverse)
+library(rgdal)
+library(classInt)
+
+# Get UK polygon data
+UK <- getData("GADM", country = "GB", level = 2)
+
+### Create dummy data
+set.seed(111)
+mydf <- data.frame(place = unique(UK$NAME_2),
+                   value = sample.int(n = 1000000, size = n_distinct(UK$NAME_2), replace = TRUE))
+
+### Create five colors for fill
+mypal <- colorQuantile(palette = "RdYlBu", domain = mydf$value, n = 5, reverse = TRUE)
+
+leaflet() %>% 
+addProviderTiles("OpenStreetMap.Mapnik") %>%
+setView(lat = 55, lng = -3, zoom = 6) %>%
+addPolygons(data = UK,
+            stroke = FALSE, smoothFactor = 0.2, fillOpacity = 0.3,
+            fillColor = ~mypal(mydf$value),
+            popup = paste("Region: ", UK$NAME_2, "<br>",
+                          "Value: ", mydf$value, "<br>")) %>%
+addLegend(position = "bottomright", pal = mypal, values = mydf$value,
+          title = "UK value",
+          opacity = 1)
+```
+
+```{r}
+data <- read.csv('bike_theft_with_demography.csv')
+data$lor_plr <- as.character(data$lor_plr)
+data$lor_plr <- str_pad(data$lor_plr,8,pad='0')
+spp    <- readOGR(dsn="../LOR_SHP/",layer="Planungsraum_EPSG_25833",p4s = "+init=epsg:25833",encoding = "DE")
+spp<- spTransform(spp, CRS("+init=epsg:4326"))
+spp@data<- merge(spp@data,data, by.x='SCHLUESSEL',by.y='lor_plr')
+```
+## integrety check
+```{r}
+df <- spp@data
+```
+
+```{r}
+### Create five colors for fill
+
+risk.bins <-quantile(spp@data$theft.per.habitant*1000,c(0,.32, .57,.8,.98,.99,1))
+#risk.bins <- unique(as.numeric(cut_number(spp@data$theft.per.habitant, 3)))
+mypal <- colorBin(palette = "Reds", bins=risk.bins,na.color='blue')
+#mypal <- findColours(classIntervals(spp@data$theft.per.habitant, 100, style="pretty"),smoothColors("#ffffe5",98,"#00441b"))
+
+
+leaflet() %>% 
+addProviderTiles("OpenStreetMap.BlackAndWhite") %>%
+setView(lat = 52.5065133, lng = 13.1445545, zoom = 10) %>%
+addPolygons(data = spp,
+            stroke = FALSE,smoothFactor = .2, fillOpacity = 0.4,
+            fillColor = ~mypal(spp@data$theft.per.habitant*1000),
+            popup = paste("Region: ", spp@data$theft.per.habitant*1000, "<br>",
+                          "Value: ", spp@data$lor_plr_name, "<br>")) %>%
+addLegend(position = "bottomright", pal = mypal, values = spp@data$theft.per.habitant*1000,
+          title = "Bike theft /1000ha",
+          opacity = 1)
+```
+
