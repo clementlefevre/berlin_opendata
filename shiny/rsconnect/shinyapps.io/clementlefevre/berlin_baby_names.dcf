@@ -1,0 +1,12 @@
+name: berlin_baby_names
+title: berlin_baby_names
+username:
+account: clementlefevre
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 398849
+bundleId: 1530961
+url: https://clementlefevre.shinyapps.io/berlin_baby_names/
+when: 1534069745.41617
+asMultiple: FALSE
+asStatic: FALSE

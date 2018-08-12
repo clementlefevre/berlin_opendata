@@ -10,6 +10,7 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 ```{r}
 library(tidyverse)
 library(directlabels)
+
 ```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
@@ -17,16 +18,14 @@ Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by press
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 ```{r}
 df <- read.csv('data/all_names_year_viertel.csv')
-df$vorname <- tolower(df$vorname)
-df$viertel <- tolower(df$viertel)
 df$terminaison <- str_sub(df$vorname, start= -1)
-
 ```
 
 
 ## Aggregate per gender-terminaison-year
 ```{r}
 top_names <- df %>% group_by(vorname) %>% summarise(total = n()) %>% arrange(desc(total))
+
 df <- df %>% group_by(year,geschlecht) %>% mutate(total_year_gender = sum(anzahl) ) 
 groupy.terminaison <- df %>% group_by(year,geschlecht,terminaison)%>% summarise(total_terminaison_year = sum(anzahl))
 groupy.terminaison <- groupy.terminaison %>% group_by(year,geschlecht) %>% mutate(total_year_gender = sum(total_terminaison_year))

@@ -43,6 +43,8 @@ data <- read.csv('bike_theft_with_demography.csv')
 data$lor_plr <- as.character(data$lor_plr)
 data$lor_plr <- str_pad(data$lor_plr,8,pad='0')
 spp    <- readOGR(dsn="../LOR_SHP/",layer="Planungsraum_EPSG_25833",p4s = "+init=epsg:25833",encoding = "DE")
+
+## reproject on leaftlet standard proj
 spp<- spTransform(spp, CRS("+init=epsg:4326"))
 spp@data<- merge(spp@data,data, by.x='SCHLUESSEL',by.y='lor_plr')
 ```

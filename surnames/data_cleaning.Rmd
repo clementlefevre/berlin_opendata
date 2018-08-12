@@ -27,7 +27,19 @@ read_names_files <- function(file.name){
 df <- read_names_files(all_files[1])
 
 df <- do.call(`rbind`,lapply(all_files, read_names_files))
-write.csv(df,'data/all_names_year_viertel.csv')
+df$vorname <- tolower(df$vorname)
+df$viertel <- tolower(df$viertel)
+df <- df %>% mutate_at('vorname', funs(iconv(., to='ASCII//TRANSLIT')))
 
+```
+
+```{r}
+## Add count for all Berlin
+df.berlin <- df  %>% group_by(vorname,geschlecht,year) %>% summarise(anzahl = sum(anzahl))
+df.berlin$viertel <- 'berlin'
+df.all <- bind_rows(df,df.berlin)
+
+
+write.csv(df.all,'data/all_names_year_viertel.csv')
 ```
 
