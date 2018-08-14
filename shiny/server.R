@@ -49,10 +49,12 @@ server <- function(input, output, session) {
       read.csv('all_names_year_viertel.csv',
                stringsAsFactors = FALSE)
     
+    
+    
   }
   
   output$year = renderUI({
-    selectInput('year', 'Year', selected = 2017, unique(df.surnames[df.surnames$geschlecht == input$gender[[1]],]$year))
+    selectInput('year', 'Year', selected = 2017, unique(df.surnames[df.surnames$geschlecht == input$gender[[1]], ]$year))
     
   })
   
@@ -63,26 +65,33 @@ server <- function(input, output, session) {
       selected = surnames.juliane,
       multiple = TRUE,
       unique(df.surnames[df.surnames$geschlecht == input$gender[[1]] &
-                           df.surnames$year == input$year[[1]],]$vorname)
+                           df.surnames$year == input$year[[1]], ]$vorname)
     )
     
   })
   
-  filter_df <- eventReactive(input$names, {
-    data <-
-      df.surnames %>% filter((geschlecht == input$gender) &
-                               ((vorname %in% input$names)))
-    data <- data %>% filter(viertel == 'berlin') %>% arrange(year)
-    data <- data %>% select(vorname, year, anzahl)
-    data <-  data %>%
-      group_by(vorname) %>%
-      complete(year = full_seq(unique(data$year), 1)) %>%
-      fill(anzahl) %>% ungroup() %>% as.data.frame
-    
-    data$anzahl <- data$anzahl %>% replace_na(0)
-    
-    data
-  })
+  filter_df <-
+    eventReactive(c(input$names,    input$city, input$gender), {
+      print(input$city)
+      
+      data <-
+        df.surnames %>% filter((geschlecht == input$gender) &
+                                 ((vorname %in% input$names)))
+      
+      
+      data <- data %>% filter(viertel == input$city) %>% arrange(year)
+      data <- data %>% select(vorname, year, anzahl)
+      
+      data <-  data %>%
+        group_by(vorname) %>%
+        complete(year = full_seq(unique(data$year), 1)) %>%
+        fill(anzahl) %>% ungroup() %>% as.data.frame
+      
+      data$anzahl <- data$anzahl %>% replace_na(0)
+      
+      
+      data
+    })
   
   
   
@@ -94,7 +103,7 @@ server <- function(input, output, session) {
     data <- filter_df()
     
     if (input$gender == 'w') {
-      colPalette <- 'rgba(222,45,38,0.8)'
+      colPalette <- 'rgba(194,0,93,0.8)'
     } else{
       colPalette <- 'rgba(32,178,170,0.8)'
     }
@@ -107,9 +116,10 @@ server <- function(input, output, session) {
                   categoryarray = data.bar$vorname)
     
     data.bar$color <- 'rgba(204,204,204,1)'
-    if (length(data.bar[data.bar$vorname %in% surnames.juliane,]$color) >
+    if (length(data.bar[data.bar$vorname %in% surnames.juliane, ]$color) >
         0) {
-      data.bar[data.bar$vorname %in% surnames.juliane,]$color <- colPalette
+      data.bar[data.bar$vorname %in% surnames.juliane, ]$color <-
+        colPalette
     }
     
     
@@ -132,8 +142,8 @@ server <- function(input, output, session) {
     }
     data <- filter_df()
     
-    label_y <- data[data$year == 2012,]$anzahl * 1.05
-    label_text <- data[data$year == 2015,]$vorname
+    label_y <- data[data$year == 2012, ]$anzahl * 1.05
+    label_text <- data[data$year == 2015, ]$vorname
     
     colourCount = length(unique(data$vorname))
     getPalette = colorRampPalette(brewer.pal(15, colPalette))

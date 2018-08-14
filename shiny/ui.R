@@ -7,6 +7,8 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
+      
+      
    
       radioButtons("gender", "Gender",
                    choiceNames = list(
@@ -14,6 +16,14 @@ shinyUI(fluidPage(
                    ),
                    choiceValues = list(
                      "w", "m"
+                   )),
+      
+      radioButtons("city", "City",
+                   choiceNames = list(
+                     'Berlin','Paris'
+                   ),
+                   choiceValues = list(
+                     "berlin", "paris"
                    )),
      
       uiOutput('year'),

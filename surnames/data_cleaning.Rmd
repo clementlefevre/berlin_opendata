@@ -39,7 +39,22 @@ df.berlin <- df  %>% group_by(vorname,geschlecht,year) %>% summarise(anzahl = su
 df.berlin$viertel <- 'berlin'
 df.all <- bind_rows(df,df.berlin)
 
+```
 
+## Add Paris data
+```{r}
+df.paris <- read.csv('data/liste_des_prenoms_2004_a_2012.csv',stringsAsFactors = FALSE, sep=';')
+df.paris <- df.paris %>% select(Annee,Prenoms,Nombre,Sexe)
+df.paris$viertel <- 'paris'
+colnames(df.paris)<- colnames(df.all)
+df.paris <- df.paris %>% mutate_at('geschlecht',funs(ifelse(.=='F','w','m')))
+
+df.paris$vorname <- tolower(df.paris$vorname)
+df.paris$viertel <- tolower(df.paris$viertel)
+df.paris <- df.paris %>% mutate_at('vorname', funs(iconv(., to='ASCII//TRANSLIT')))
+df.all$year <- as.numeric(df.all$year)
+df.all <- bind_rows(df.all,df.paris)
 write.csv(df.all,'data/all_names_year_viertel.csv')
+
 ```
 
