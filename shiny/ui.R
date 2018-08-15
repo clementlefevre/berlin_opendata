@@ -1,5 +1,5 @@
 library(plotly)
-library(shinycssloaders)
+library(DT)
 
 
 shinyUI(fluidPage(
@@ -27,13 +27,14 @@ shinyUI(fluidPage(
                    )),
      
       uiOutput('year'),
-      uiOutput('names')
+      uiOutput('names'),
+      DT::dataTableOutput("table")
       
     ),
     
     mainPanel(
       tabsetPanel(type = "tabs",
-                  tabPanel( "Names", br(),plotlyOutput('BarNames'), br(),plotlyOutput('LineNames')) )
+                  tabPanel( "Names",  textOutput("selected_var"), br(),plotlyOutput('BarNames'), br(),plotlyOutput('LineNames')) )
                  
                   
       

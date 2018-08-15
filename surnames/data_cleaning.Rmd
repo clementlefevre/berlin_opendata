@@ -9,6 +9,7 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 
 ```{r}
 library(tidyverse)
+library(stringr)
 ```
 
 ```{r}
@@ -50,8 +51,12 @@ colnames(df.paris)<- colnames(df.all)
 df.paris <- df.paris %>% mutate_at('geschlecht',funs(ifelse(.=='F','w','m')))
 
 df.paris$vorname <- tolower(df.paris$vorname)
-df.paris$viertel <- tolower(df.paris$viertel)
+
 df.paris <- df.paris %>% mutate_at('vorname', funs(iconv(., to='ASCII//TRANSLIT')))
+df.paris <- df.paris  %>% group_by(vorname,geschlecht,year,viertel) %>% summarise(anzahl = sum(anzahl))
+
+
+
 df.all$year <- as.numeric(df.all$year)
 df.all <- bind_rows(df.all,df.paris)
 write.csv(df.all,'data/all_names_year_viertel.csv')
