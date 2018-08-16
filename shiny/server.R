@@ -2,7 +2,8 @@ library(leaflet)
 library(dplyr)
 library(tidyr)
 library(plotly)
-library(directlabels)
+library(ggrepel)
+
 library(RColorBrewer)
 
 
@@ -11,7 +12,7 @@ df.surnames <- NULL
 data <- NULL
 total.names <- 0
 
-gender.list <- list(w='girl', m='boy')
+gender.list <- list(w = 'girl', m = 'boy')
 
 surnames.juliane <-
   c(
@@ -46,6 +47,8 @@ surnames.juliane <-
     'yael'
   )
 
+surnames.juliane <- head(surnames.juliane, 3)
+
 server <- function(input, output, session) {
   if (is.null(df.surnames)) {
     df.surnames <-
@@ -57,7 +60,7 @@ server <- function(input, output, session) {
   }
   
   output$year = renderUI({
-    selectInput('year', 'Year', selected = 2017, unique(df.surnames[df.surnames$geschlecht == input$gender[[1]], ]$year))
+    selectInput('year', 'Year', selected = 2017, unique(df.surnames[df.surnames$geschlecht == input$gender[[1]],]$year))
     
   })
   
@@ -68,7 +71,7 @@ server <- function(input, output, session) {
       selected = surnames.juliane,
       multiple = TRUE,
       unique(df.surnames[df.surnames$geschlecht == input$gender[[1]] &
-                           df.surnames$year == input$year[[1]], ]$vorname)
+                           df.surnames$year == input$year[[1]],]$vorname)
     )
     
   })
@@ -80,7 +83,7 @@ server <- function(input, output, session) {
       data <-
         df.surnames %>% filter(geschlecht == input$gender)
       
-     
+      
       data <-
         data %>% filter(viertel == input$city) %>% arrange(year)
       
@@ -90,7 +93,7 @@ server <- function(input, output, session) {
       data <-
         data %>% filter(vorname %in% input$names)
       
-     
+      
       
       data <-
         data %>% select(vorname, year, anzahl)
@@ -103,23 +106,37 @@ server <- function(input, output, session) {
       data$anzahl <-
         data$anzahl %>% replace_na(0)
       
-      result.data <- combo <- list(total.names = total.names, df= data, data.table = data.table)
+      result.data <-
+        combo <-
+        list(total.names = total.names,
+             df = data,
+             data.table = data.table)
       result.data
     })
   
- 
+  
   
   output$selected_var <- renderText({
     result <- filter_df()
     
-    paste0("Total ", gender.list[input$gender], " for ",input$city," in ", input$year, " : ", result$total.names)
+    paste0(
+      "Total ",
+      gender.list[input$gender],
+      " for ",
+      input$city,
+      " in ",
+      input$year,
+      " : ",
+      result$total.names
+    )
   })
   
   
   output$table <- DT::renderDataTable(DT::datatable({
-   data <- filter_df()
-   data.table <- data$data.table %>% filter(year==input$year) %>% select(vorname,anzahl)
-   data.table
+    data <- filter_df()
+    data.table <-
+      data$data.table %>% filter(year == input$year) %>% select(vorname, anzahl)
+    data.table
   }, rownames = FALSE,  options = list(lengthMenu = c(30, 50))))
   
   
@@ -145,9 +162,9 @@ server <- function(input, output, session) {
                   categoryarray = data.bar$vorname)
     
     data.bar$color <- 'rgba(204,204,204,1)'
-    if (length(data.bar[data.bar$vorname %in% surnames.juliane, ]$color) >
+    if (length(data.bar[data.bar$vorname %in% surnames.juliane,]$color) >
         0) {
-      data.bar[data.bar$vorname %in% surnames.juliane, ]$color <-
+      data.bar[data.bar$vorname %in% surnames.juliane,]$color <-
         colPalette
     }
     
@@ -165,38 +182,59 @@ server <- function(input, output, session) {
   
   output$LineNames <- renderPlotly({
     if (input$gender == 'w') {
-      colPalette <- 'Reds'
+      colPalette <- 'PuRd'
     } else{
       colPalette <- 'Blues'
     }
     result <- filter_df()
     data <- result$df
     
-    label_y <- data[data$year == min(data$year), ]$anzahl * 1.05
-    label_text <- data[data$year == min(data$year), ]$vorname
+    label_y <- data[data$year == min(data$year),]$anzahl * 1.05
+    label_text <- data[data$year == min(data$year),]$vorname
     
     colourCount = length(unique(data$vorname))
     getPalette = colorRampPalette(brewer.pal(15, colPalette))
     
+    colors <-
+      colorRampPalette(brewer.pal(colourCount,colPalette))(colourCount)
     
-    p2 <- ggplot(data,
-                 aes(
-                   x = year,
-                   y = anzahl,
-                   group = vorname,
-                   colour = vorname
-                 )) + geom_line() +     scale_color_manual(values = getPalette(colourCount)) +
-      theme(legend.position = "none") +
-      annotate(
-        "text",
-        x = min(data$year),
-        y = label_y,
-        label = label_text,
-        size = 2
-      )
     
-    ggplotly()
+    p <- ggplot(data = data,
+                aes(
+                  x = year,
+                  y = anzahl,
+                  group = vorname,
+                  colour = vorname
+                )) +
+      geom_line(size = 2) +
+      geom_point(size = 3) +
+      scale_colour_brewer(palette = colPalette)
     
+    
+    year_annotation <- min(data$year)
+    p <- ggplotly(p)
+    
+    p <-        add_annotations(
+      p,
+      x = year_annotation,
+      y = data[data$year == year_annotation, ]$anzahl+10,
+      text = data[data$year == year_annotation, ]$vorname,
+      font = list(
+        family = 'Arial',
+        size = 16,
+        color = 'white'
+      ),
+      
+      xref = "x",
+      yref = "y",
+      showarrow = FALSE,
+      
+      bgcolor = colors,
+      ax = 0,
+      ay = 0
+    )
+    
+    p
     
   })
   
