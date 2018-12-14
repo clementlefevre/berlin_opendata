@@ -2,3 +2,6 @@
 .Rproj.user/
 
 .Rproj.user
+
+degewo/config.py
+*.pyc

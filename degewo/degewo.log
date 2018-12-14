@@ -1,0 +1,305 @@
+2018-12-14 12:28:19,244:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:28:19,540:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:28:19,574:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:28:26,619:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:28:26,943:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:28:26,961:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:28:37,011:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:28:37,325:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:28:37,354:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:28:51,449:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:28:51,728:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:28:51,760:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:28:59,791:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:29:00,122:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:29:00,143:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:29:05,180:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:29:05,519:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:29:05,542:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:29:12,603:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:29:12,789:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:29:12,803:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:29:13,061:DEBUG:new offers saved into DB :62 offers
+2018-12-14 12:29:13,347:ERROR:message
+Traceback (most recent call last):
+  File "main.py", line 18, in job
+    send_notification(df_new_offers.url.tolist())
+TypeError: send_notification() missing 1 required positional argument: 'excel_file'
+2018-12-14 12:29:58,492:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:29:58,758:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:29:58,783:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:30:03,823:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:30:04,143:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:30:04,168:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:31:07,701:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:31:07,976:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:31:07,995:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:31:21,030:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:31:21,316:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:31:21,338:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:31:29,384:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:31:29,694:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:31:29,712:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:31:34,820:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:31:35,118:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:31:35,141:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:31:46,216:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:31:46,563:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:31:46,584:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:35:51,920:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:35:52,189:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:35:52,221:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:36:03,257:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:36:04,584:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:36:04,610:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:36:09,668:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:36:09,985:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:36:10,002:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:36:21,105:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:36:21,398:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:36:21,422:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:36:31,480:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:36:31,804:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:36:31,843:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:36:40,898:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:36:41,284:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:36:41,302:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:36:55,367:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:36:55,552:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:36:55,557:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:36:55,835:DEBUG:new offers saved into DB :62 offers
+2018-12-14 12:36:56,079:ERROR:message
+Traceback (most recent call last):
+  File "main.py", line 19, in job
+    send_notification(df_new_offers.url.tolist(),EXCEL_FILE)
+  File "/home/ramon/workspace/berlin_opendata/degewo/service/send_email.py", line 33, in send_notification
+    msg['Subject']="Degewo : {} new offers".format(new_offers_list.shape[0])
+AttributeError: 'list' object has no attribute 'shape'
+2018-12-14 12:37:35,573:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:37:35,855:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:37:35,874:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:37:47,041:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:37:47,314:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:37:47,342:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:37:59,376:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:37:59,667:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:37:59,690:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:38:14,756:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:38:15,106:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:38:15,130:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:38:29,234:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:38:29,532:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:38:29,549:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:38:39,602:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:38:40,191:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:38:40,223:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:38:54,303:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:38:54,608:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:38:54,632:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:39:03,693:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:39:03,907:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:39:03,912:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:39:04,147:DEBUG:new offers saved into DB :62 offers
+2018-12-14 12:39:04,364:ERROR:message
+Traceback (most recent call last):
+  File "main.py", line 19, in job
+    send_notification(df_new_offers.url.tolist(),EXCEL_FILE)
+  File "/home/ramon/workspace/berlin_opendata/degewo/service/send_email.py", line 36, in send_notification
+    msg.attach(MIMEText('\n'.join(new_offers_list.url.tolist()), 'plain'))
+AttributeError: 'list' object has no attribute 'url'
+2018-12-14 12:39:47,378:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:39:47,643:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:39:47,662:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:39:57,694:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:39:57,973:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:39:57,992:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:40:10,049:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:40:10,377:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:40:10,409:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:40:23,516:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:40:23,802:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:40:23,825:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:40:34,882:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:40:35,215:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:40:35,255:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:40:44,316:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:40:44,600:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:40:44,620:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:40:49,668:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:40:49,842:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:40:49,850:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:40:50,092:DEBUG:new offers saved into DB :62 offers
+2018-12-14 12:40:53,343:DEBUG:Email sent!
+2018-12-14 12:49:48,001:INFO:Running job Every 10 minutes do job() (last run: [never], next run: 2018-12-14 12:49:47)
+2018-12-14 12:49:48,015:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:49:48,303:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 12:49:48,368:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:50:02,414:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:50:02,746:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:50:02,812:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:50:17,886:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:50:18,186:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:50:18,219:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:50:23,264:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:50:23,581:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:50:23,605:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:50:34,678:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:50:35,034:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:50:35,061:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:50:42,107:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:50:43,312:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:50:43,330:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:50:55,374:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 12:50:55,556:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 12:50:55,562:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 12:50:55,755:DEBUG:new offers saved into DB :0 offers
+2018-12-14 13:00:56,648:INFO:Running job Every 10 minutes do job() (last run: 2018-12-14 12:50:55, next run: 2018-12-14 13:00:55)
+2018-12-14 13:00:56,656:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:00:56,963:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 13:00:57,019:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:01:06,062:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:01:06,343:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:01:06,363:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:01:19,409:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:01:19,700:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:01:19,719:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:01:31,759:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:01:32,043:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:01:32,063:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:01:45,117:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:01:45,445:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:01:45,475:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:01:59,539:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:01:59,825:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:01:59,847:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:02:11,907:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:02:12,100:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:02:12,105:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:02:12,260:DEBUG:new offers saved into DB :0 offers
+2018-12-14 13:12:13,148:INFO:Running job Every 10 minutes do job() (last run: 2018-12-14 13:02:12, next run: 2018-12-14 13:12:12)
+2018-12-14 13:12:13,160:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:12:13,474:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 13:12:13,498:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:12:24,524:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:12:24,859:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:12:24,879:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:12:30,941:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:12:31,237:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:12:31,263:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:12:45,315:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:12:45,605:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:12:45,632:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:12:57,668:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:12:57,962:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:12:57,989:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:13:10,027:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:13:10,305:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:13:10,329:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:13:23,376:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 13:13:23,554:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 13:13:23,560:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 13:13:23,724:DEBUG:new offers saved into DB :0 offers
+2018-12-14 14:33:54,499:INFO:Running job Every 10 minutes do job() (last run: 2018-12-14 13:13:23, next run: 2018-12-14 13:23:23)
+2018-12-14 14:33:54,504:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:33:54,505:ERROR:message
+Traceback (most recent call last):
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/socket.py", line 733, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 345, in _make_request
+    self._validate_conn(conn)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 844, in _validate_conn
+    conn.connect()
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+requests.packages.urllib3.exceptions.NewConnectionError: <requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f736f03d080>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/adapters.py", line 438, in send
+    timeout=timeout
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/packages/urllib3/util/retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+requests.packages.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='immosuche.degewo.de', port=443): Max retries exceeded with url: /de/search.json?utf8=%E2%9C%93&property_type_id=1 (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f736f03d080>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 15, in job
+    df_online_offers = retrieve_offers()
+  File "/home/ramon/workspace/berlin_opendata/degewo/service/degewo_json_to_db.py", line 35, in retrieve_offers
+    result = get_json(START_URL)
+  File "/home/ramon/workspace/berlin_opendata/degewo/service/degewo_json_to_db.py", line 22, in get_json
+    r = requests.get(url)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/sessions.py", line 518, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/sessions.py", line 639, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ramon/anaconda2/envs/py35/lib/python3.5/site-packages/requests/adapters.py", line 502, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='immosuche.degewo.de', port=443): Max retries exceeded with url: /de/search.json?utf8=%E2%9C%93&property_type_id=1 (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f736f03d080>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2018-12-14 14:43:55,257:INFO:Running job Every 10 minutes do job() (last run: 2018-12-14 14:33:54, next run: 2018-12-14 14:43:54)
+2018-12-14 14:43:55,270:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:43:55,569:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 14:43:55,631:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:44:04,663:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:44:04,963:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:44:04,991:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:44:14,042:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:44:14,376:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:44:14,405:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:44:19,456:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:44:19,747:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:44:19,780:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:44:25,826:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:44:26,122:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:44:26,152:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:44:32,189:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:44:32,504:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:44:32,540:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:44:38,614:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:44:38,799:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:44:38,806:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:44:38,985:DEBUG:new offers saved into DB :0 offers
+2018-12-14 14:54:39,863:INFO:Running job Every 10 minutes do job() (last run: 2018-12-14 14:44:39, next run: 2018-12-14 14:54:39)
+2018-12-14 14:54:39,873:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:54:40,186:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?utf8=%E2%9C%93&property_type_id=1 HTTP/1.1" 200 None
+2018-12-14 14:54:40,203:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:54:55,228:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:54:55,552:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=2&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:54:55,584:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:55:06,647:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:55:06,954:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=3&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:55:06,977:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:55:16,035:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:55:16,336:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=4&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:55:16,359:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:55:28,422:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:55:28,727:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=5&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:55:28,766:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:55:38,815:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:55:39,108:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=6&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:55:39,128:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:55:49,187:DEBUG:Starting new HTTPS connection (1): immosuche.degewo.de
+2018-12-14 14:55:49,399:DEBUG:https://immosuche.degewo.de:443 "GET /de/search.json?page=7&property_type_id=1&utf8=%E2%9C%93 HTTP/1.1" 200 None
+2018-12-14 14:55:49,407:DEBUG:200_application/json; charset=utf-8_utf-8
+2018-12-14 14:55:49,576:DEBUG:new offers saved into DB :0 offers
